@@ -1,0 +1,12 @@
+OBJ+=obj/request.o
+OBJ+=obj/chtml/ctest.o
+OBJ+=obj/base/cServer.o
+OBJ+=obj/base/SQLiteH.o
+OBJ+=obj/base/output.o
+OBJ+=obj/base/ssl_connection.o
+OBJ+=obj/base/cJSON.o
+OBJ+=obj/base/parse.o
+OBJ+=obj/base/filetools.o
+OBJ+=obj/base/response.o
+HTML_OBJ+=src/chtml/ctest.c
+OBJ+=obj/chtml/ctest.o

@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html>
+?c 
+    #include "SQLiteH.h"
+    cJSON* obj = sqliteH_readJsonFromDb("example/test.db", "SELECT * FROM Persons");
+    uint8_t wert = 42u;
+?c
+
+<head>
+    <meta charset="utf-8">
+    <title>C Server Test</title>
+</head>
+
+<body>
+    <h1>It works ;)</h1>
+    <p>?c OUT( "Ich lese eine c Variable mit Wert %d", wert); ?c</p>
+    <h2>Hier kommt die Ausgabe aus einer Datenbank: </h2>
+    ?c OUT("%s", cJSON_Print(obj)); ?c
+    <h2>Mit dem Knopf kann man Post anfragen schicken</h2>
+    <input id=number type=number value=111></input>
+    <button onclick='compute();'>Hier drücken</button>
+    <p id=result></p>
+</body>
+
+<script>
+    function compute() {
+        var val = {};
+        val.a = document.getElementById("number").value;
+        post("/hello", val);
+    }
+
+    function post(path, params, method='post') {
+
+        var data = new FormData();
+        
+        for (const key in params) 
+        {
+            if (params.hasOwnProperty(key)) 
+            {
+                data.append(key, params[key]);
+            }
+        }
+
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function()
+        {
+            if (xhr.readyState == XMLHttpRequest.DONE)
+            {
+                document.getElementById("result").innerHTML = "37 * " + document.getElementById("number").value + " = " + xhr.responseText;
+            }
+        }
+
+        xhr.open("POST", "hello");
+        xhr.send(data); 
+    }
+</script>
+
+<script>
+    var tableData = ?c OUT("%s", cJSON_Print(obj)); ?c
+    console.log(tableData)
+</script>
+
+?c
+    cJSON_Delete(obj);
+?c
+</html>

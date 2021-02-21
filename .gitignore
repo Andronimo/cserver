@@ -1,0 +1,7 @@
+.vscode/
+bin/
+obj/
+elib/*.o
+elib/libtools.so
+src/chtml/
+inc/chtml/
