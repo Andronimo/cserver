@@ -32,7 +32,7 @@ elib:
 	@$(MAKE) -C $@
 
 inputs:
-	@find src | grep '\.c$$' | sed 's/src\/\(.*\)\.c/OBJ+=obj\/\1.o/' > inputs.mk 	
+	@find src | grep '\.c$$' | sed '/src\/chtml/ d' | sed 's/src\/\(.*\)\.c/OBJ+=obj\/\1.o/' > inputs.mk 	
 	@find html | grep '\.html$$' | sed 's/html\/\(.*\)\.html/HTML_OBJ+=src\/chtml\/\1.c\nOBJ+=obj\/chtml\/\1.o/' >> inputs.mk 	
 	@cat inputs.mk
 	

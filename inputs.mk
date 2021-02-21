@@ -1,5 +1,4 @@
 OBJ+=obj/request.o
-OBJ+=obj/chtml/ctest.o
 OBJ+=obj/base/cServer.o
 OBJ+=obj/base/SQLiteH.o
 OBJ+=obj/base/output.o
